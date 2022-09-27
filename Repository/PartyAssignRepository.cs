@@ -32,7 +32,7 @@ namespace Exercise_03.Repository
             return _mapper.Map<List<AssignPartyModel>>(records);
         }
 
-        public async Task<int> AddAssignParty(AssignPartyModel model)
+        public async Task<long> AddAssignParty(AssignPartyModel model)
         {
             var y = _partyProductDbContext.AssignParty
                   .Where(x => x.PartyId == model.PartyId && x.ProductId == model.ProductId).FirstOrDefault();
@@ -54,7 +54,7 @@ namespace Exercise_03.Repository
             //var AssignParty = _mapper.Map<AssignParty>(model);
         }
 
-        public async Task<int> UpdateAssignParty(AssignPartyModel model, int id)
+        public async Task<long> UpdateAssignParty(AssignPartyModel model, long id)
         {
             var y = _partyProductDbContext.AssignParty
                  .Where(x => x.PartyId == model.PartyId && x.ProductId == model.ProductId).FirstOrDefault();
@@ -78,7 +78,7 @@ namespace Exercise_03.Repository
 
         }
 
-        public async Task<bool> DeleteAssignParty(AssignPartyModel model, int id)
+        public async Task<bool> DeleteAssignParty(AssignPartyModel model, long id)
         {
             //if (id == model.Id)
             //{
@@ -105,7 +105,7 @@ namespace Exercise_03.Repository
 
           
         }
-        public async Task<List<ProductModel>> getNotAssigendProduct(int partyId)
+        public async Task<List<ProductModel>> getNotAssigendProduct(long partyId)
         {
             var products = await _partyProductDbContext.Product.Except(_partyProductDbContext.AssignParty.Where(x => x.PartyId == partyId).Include(x => x.Product).Select(x => x.Product)).ToListAsync();
           

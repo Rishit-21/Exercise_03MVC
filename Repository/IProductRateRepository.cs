@@ -9,8 +9,8 @@ namespace Exercise_03.Repository
    public interface IProductRateRepository
     {
         Task<List<ProductRateModel>> GetAllProductRate();
-        Task<int> AddProductRate(ProductRateModel model);
-        Task<int> UpdateProductRate(ProductRateModel model, int id);
-        Task<bool> DeleteProductRate(ProductRateModel model, int id);
+        Task<long> AddProductRate(ProductRateModel model);
+        Task<long> UpdateProductRate(ProductRateModel model, long id);
+        Task<bool> DeleteProductRate(ProductRateModel model, long id);
     }
 }

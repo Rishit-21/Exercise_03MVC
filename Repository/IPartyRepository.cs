@@ -9,8 +9,8 @@ namespace Exercise_03.Repository
    public interface IPartyRepository
     {
         Task<List<partyModel>> GetAllParties();
-        Task<int> AddParty(partyModel model);
-        Task<int> UpdateParty(partyModel model, int id);
-        Task<bool> DeleteParty(partyModel model, int id);
+        Task<long> AddParty(partyModel model);
+        Task<long> UpdateParty(partyModel model, long id);
+        Task<bool> DeleteParty(partyModel model, long id);
     }
 }

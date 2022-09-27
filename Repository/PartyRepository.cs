@@ -29,7 +29,7 @@ namespace Exercise_03.Repository
             }).ToListAsync();
         }
 
-        public async Task<int> AddParty(partyModel model)
+        public async Task<long> AddParty(partyModel model)
         {
 
             var y = _partyProductDbContext.Party
@@ -50,7 +50,7 @@ namespace Exercise_03.Repository
         } 
 
        
-        public async Task<int> UpdateParty(partyModel model, int id)
+        public async Task<long> UpdateParty(partyModel model, long id)
         {
             var y = _partyProductDbContext.Party
         .Where(x => x.partyName == model.partyName).FirstOrDefault();
@@ -75,7 +75,7 @@ namespace Exercise_03.Repository
 
         }
 
-        public async Task<bool> DeleteParty(partyModel model, int id)
+        public async Task<bool> DeleteParty(partyModel model, long id)
         {
             //if (id == model.Id)
             //{

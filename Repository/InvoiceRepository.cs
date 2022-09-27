@@ -24,7 +24,7 @@ namespace Exercise_03.Repository
         }
 
 
-        public async Task<List<AssignPartyModel>> BindProductAsync(int _PartyId)
+        public async Task<List<AssignPartyModel>> BindProductAsync(long _PartyId)
         {
 
             return await _partyProductDbContext.AssignParty.Where(x => x.PartyId == _PartyId).
@@ -36,13 +36,13 @@ namespace Exercise_03.Repository
                  ).Distinct().ToListAsync();
 
         }
-        public async Task<double> BindRate(int productId)
+        public async Task<double> BindRate(long productId)
         {
             var rates = await _partyProductDbContext.ProductRate.Where(x => x.ProductId == productId).Select(x => x.ProductRates).FirstOrDefaultAsync();
             return rates;
         }
 
-        public async Task<List<InvoiceModel>> ShowInvoice(int id)
+        public async Task<List<InvoiceModel>> ShowInvoice(long id)
         {
 
 
@@ -60,7 +60,7 @@ namespace Exercise_03.Repository
 
             }).ToListAsync();
         }
-        public async Task<int> AddInvoice(InvoiceModel model,int PId)
+        public async Task<long> AddInvoice(InvoiceModel model, long PId)
         {
 
             var Invoices = new Invoice()
@@ -77,7 +77,7 @@ namespace Exercise_03.Repository
             await _partyProductDbContext.Invoice.AddAsync(Invoices);
             await _partyProductDbContext.SaveChangesAsync();
 
-            int grandTotal = (from x in _partyProductDbContext.Invoice.Where(x=>x.partyId==PId) select x.Total).Sum();
+            long grandTotal = (from x in _partyProductDbContext.Invoice.Where(x=>x.partyId==PId) select x.Total).Sum();
 
             return grandTotal;
 

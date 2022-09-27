@@ -7,7 +7,7 @@ namespace Exercise_03.Data
 {
     public class Party
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         
         public string partyName { get; set; }
     }

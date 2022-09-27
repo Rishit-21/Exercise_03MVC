@@ -38,12 +38,12 @@ namespace Exercise_03.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> AddParty(partyModel model, [FromQuery] int Partyid)
+        public async Task<IActionResult> AddParty(partyModel model, [FromQuery] long Partyid)
         {
 
             if (ModelState.IsValid)
             {
-                int id = await _partyRepository.AddParty(model);
+                long id = await _partyRepository.AddParty(model);
                 if (id > 0)
                 {
                     return RedirectToAction(nameof(AddParty), new { isSuccess = 0, Partyid = id });
@@ -60,7 +60,7 @@ namespace Exercise_03.Controllers
 
 
         [HttpGet("EditParty/{id}/{PartyName}")]
-        public IActionResult EditParty(int id, string PartyName, int isSuccess = 2)
+        public IActionResult EditParty(long id, string PartyName, int isSuccess = 2)
         {
             ViewBag.isSuccess = isSuccess;
             ViewBag.id = id;
@@ -75,12 +75,12 @@ namespace Exercise_03.Controllers
 
         [HttpPost]
         [Route("EditParty/{id}/{PartyName}")]
-        public async Task<IActionResult> EditParty(partyModel model, [FromRoute] int id)
+        public async Task<IActionResult> EditParty(partyModel model, [FromRoute] long id)
         {
 
             if (ModelState.IsValid)
             {
-                int Id = await _partyRepository.UpdateParty(model, id);
+                long Id = await _partyRepository.UpdateParty(model, id);
                 if (Id > 0)
                 {
                     return RedirectToAction(nameof(EditParty), new { isSuccess = 0, Partyid = id });
@@ -93,7 +93,7 @@ namespace Exercise_03.Controllers
 
 
         //[Route("{Delid}")]
-        public async Task<IActionResult> DelParty(int id, partyModel model)
+        public async Task<IActionResult> DelParty(long id, partyModel model)
         {
 
             bool isDeleted = await _partyRepository.DeleteParty(model, id);

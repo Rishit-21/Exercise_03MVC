@@ -8,7 +8,7 @@ namespace Exercise_03.Models
 {
     public class ProductModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Display (Name ="Product Name")]
         [Required]

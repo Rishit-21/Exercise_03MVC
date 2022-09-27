@@ -9,11 +9,11 @@ namespace Exercise_03.Repository
    public interface IPartyAssignRepository
     {
         Task<List<AssignPartyModel>> GetAllAssignParty();
-        Task<int> AddAssignParty(AssignPartyModel model);
-        Task<int> UpdateAssignParty(AssignPartyModel model, int id);
-        Task<bool> DeleteAssignParty(AssignPartyModel model, int id);
+        Task<long> AddAssignParty(AssignPartyModel model);
+        Task<long> UpdateAssignParty(AssignPartyModel model, long id);
+        Task<bool> DeleteAssignParty(AssignPartyModel model, long id);
         Task<List<AssignPartyModel>> GetAllAssignUniqueParty();
-        Task<List<ProductModel>> getNotAssigendProduct(int partyId);
+        Task<List<ProductModel>> getNotAssigendProduct(long partyId);
 
     }
 }

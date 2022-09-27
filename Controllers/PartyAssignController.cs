@@ -29,7 +29,7 @@ namespace Exercise_03.Controllers
             return View(AssignParties);
         }
 
-        public async Task<ViewResult> AddAssignParty(int isSuccess = 2, int id = 0)
+        public async Task<ViewResult> AddAssignParty(int isSuccess = 2, long id = 0)
         {
             ViewBag.isSuccess = isSuccess;
             ViewBag.id = id;
@@ -40,12 +40,12 @@ namespace Exercise_03.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> AddAssignParty(AssignPartyModel model, [FromQuery] int Partyid)
+        public async Task<IActionResult> AddAssignParty(AssignPartyModel model, [FromQuery] long Partyid)
         {
 
             if (ModelState.IsValid)
             {
-                int id = await _partyAssignRepository.AddAssignParty(model);
+                long id = await _partyAssignRepository.AddAssignParty(model);
                 if (id > 0)
                 {
                     return RedirectToAction(nameof(AddAssignParty), new { isSuccess = 0, Partyid = id });
@@ -78,12 +78,12 @@ namespace Exercise_03.Controllers
 
 
         [HttpPost("UpdateAssignParty/{id}/{AssignPartyName}/{AssignProductName}")]
-        public async Task<IActionResult> UpdateAssignParty([FromRoute] int id, AssignPartyModel model)
+        public async Task<IActionResult> UpdateAssignParty([FromRoute] long id, AssignPartyModel model)
         {
 
             if (ModelState.IsValid)
             {
-               int Id= await _partyAssignRepository.UpdateAssignParty(model, id);
+                long Id = await _partyAssignRepository.UpdateAssignParty(model, id);
                 if (Id > 0)
                 {
 
@@ -95,7 +95,7 @@ namespace Exercise_03.Controllers
             return RedirectToAction("UpdateAssignParty");
         }
 
-        public async Task<IActionResult> DelAassignParty(int id, AssignPartyModel model)
+        public async Task<IActionResult> DelAassignParty(long id, AssignPartyModel model)
         {
 
             bool isDeleted = await _partyAssignRepository.DeleteAssignParty(model, id);
@@ -110,7 +110,7 @@ namespace Exercise_03.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> NotAssigendProduct(int PartyId)
+        public async Task<JsonResult> NotAssigendProduct(long PartyId)
         {
             //List<prodList> products = new List<prodList>();
 

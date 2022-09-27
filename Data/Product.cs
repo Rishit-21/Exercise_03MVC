@@ -7,7 +7,7 @@ namespace Exercise_03.Data
 {
     public class Product
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public string productName { get; set; }
     }

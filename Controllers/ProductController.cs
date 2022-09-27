@@ -39,12 +39,12 @@ namespace Exercise_03.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> AddProduct(ProductModel model, [FromQuery] int Productid)
+        public async Task<IActionResult> AddProduct(ProductModel model, [FromQuery] long Productid)
         {
 
             if (ModelState.IsValid)
             {
-                int id = await _productRepository.AddProduct(model);
+                long id = await _productRepository.AddProduct(model);
                 if (id > 0)
                 {
                     return RedirectToAction(nameof(AddProduct), new { isSuccess = 0, Productid = id });
@@ -57,7 +57,7 @@ namespace Exercise_03.Controllers
 
 
         [HttpGet("/EditProduct/{id}/{name}")]
-        public async Task<IActionResult> EditProduct([FromRoute] int id,[FromRoute] string name ,ProductModel model, int isSuccess = 2)
+        public async Task<IActionResult> EditProduct([FromRoute] long id,[FromRoute] string name ,ProductModel model, int isSuccess = 2)
         {
             ViewBag.isSuccess = isSuccess;
             ViewBag.id = id;
@@ -74,12 +74,12 @@ namespace Exercise_03.Controllers
 
 
         [HttpPost("EditProduct/{id}/{name}")]
-        public async Task<IActionResult> EditProduct(ProductModel model, [FromRoute] int id, [FromRoute] string name)
+        public async Task<IActionResult> EditProduct(ProductModel model, [FromRoute] long id, [FromRoute] string name)
         {
 
             if (ModelState.IsValid)
             {
-               int Id= await _productRepository.UpdateProduct(model, id);
+                long Id = await _productRepository.UpdateProduct(model, id);
                 if (Id > 0)
                 {
                     return RedirectToAction(nameof(EditProduct), new { isSuccess = 0, Partyid = id });
@@ -90,7 +90,7 @@ namespace Exercise_03.Controllers
             return View("EditProduct");
         }
 
-        public async Task<IActionResult> DelProduct(int id, ProductModel model)
+        public async Task<IActionResult> DelProduct(long id, ProductModel model)
         {
 
             bool isDeleted = await _productRepository.DeleteProduct(model, id);

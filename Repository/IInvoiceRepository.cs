@@ -8,9 +8,9 @@ namespace Exercise_03.Repository
 {
    public interface IInvoiceRepository
     {
-        Task<List<AssignPartyModel>> BindProductAsync(int _PartyId);
-        Task<double> BindRate(int productId);
-        Task<List<InvoiceModel>> ShowInvoice(int id);
-        Task<int> AddInvoice(InvoiceModel model,int PId);
+        Task<List<AssignPartyModel>> BindProductAsync(long _PartyId);
+        Task<double> BindRate(long productId);
+        Task<List<InvoiceModel>> ShowInvoice(long id);
+        Task<long> AddInvoice(InvoiceModel model, long PId);
     }
 }

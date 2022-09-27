@@ -31,7 +31,7 @@ namespace Exercise_03.Repository
             return _mapper.Map<List<ProductRateModel>>(records);
         }
 
-        public async Task<int> AddProductRate(ProductRateModel model)
+        public async Task<long> AddProductRate(ProductRateModel model)
         {
             //var  =  _mapper.Map<ProductRate>(model);
 
@@ -58,7 +58,7 @@ namespace Exercise_03.Repository
 
         }
 
-        public async Task<int> UpdateProductRate(ProductRateModel model, int id)
+        public async Task<long> UpdateProductRate(ProductRateModel model, long id)
         {
             var y = _partyProductDbContext.ProductRate
                  .Where(x => x.ProductId == model.ProductId && x.ProductRates==model.ProductRates).FirstOrDefault();
@@ -81,7 +81,7 @@ namespace Exercise_03.Repository
             return 0;
         }
 
-        public async Task<bool> DeleteProductRate(ProductRateModel model, int id)
+        public async Task<bool> DeleteProductRate(ProductRateModel model, long id)
         {
             //if (id == model.Id)
             //{

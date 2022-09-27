@@ -31,7 +31,7 @@ namespace Exercise_03.Controllers
 
 
         [HttpGet]
-        public async Task<ViewResult> AddProductRate(int isSuccess = 2, int id = 0)
+        public async Task<ViewResult> AddProductRate(int isSuccess = 2, long id = 0)
         {
             ViewBag.isSuccess = isSuccess;
             ViewBag.id = id;
@@ -39,12 +39,12 @@ namespace Exercise_03.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProductRate(ProductRateModel model, [FromQuery] int Partyid)
+        public async Task<IActionResult> AddProductRate(ProductRateModel model, [FromQuery] long Partyid)
         {
 
             if (ModelState.IsValid)
             {
-                int id = await _productRateRepository.AddProductRate(model);
+                long id = await _productRateRepository.AddProductRate(model);
                 if (id > 0)
                 {
                     return RedirectToAction(nameof(AddProductRate), new { isSuccess = 0, Partyid = id });
@@ -58,7 +58,7 @@ namespace Exercise_03.Controllers
 
 
         [HttpGet("UpdateProductRate/{id}/{RateProductName}/{ProductRate}")]
-        public IActionResult UpdateProductRate([FromRoute]int id, [FromRoute] int RateProductName, [FromRoute] double ProductRate  , int isSuccess = 2)
+        public IActionResult UpdateProductRate([FromRoute] long id, [FromRoute] long RateProductName, [FromRoute] double ProductRate  , int isSuccess = 2)
         {
             //ViewBag.isSuccess = isSuccess;
             ViewBag.id = id;
@@ -78,12 +78,12 @@ namespace Exercise_03.Controllers
 
 
         [HttpPost("UpdateProductRate/{id}/{RateProductName}/{ProductRate}")]
-        public async Task<IActionResult> UpdateProductRate([FromRoute] int id, ProductRateModel model)
+        public async Task<IActionResult> UpdateProductRate([FromRoute] long id, ProductRateModel model)
         {
 
             if (ModelState.IsValid)
             {
-               int Id =  await _productRateRepository.UpdateProductRate(model, id);
+                long Id =  await _productRateRepository.UpdateProductRate(model, id);
                 if (Id > 0)
                 {
                     return RedirectToAction(nameof(ProductRate), new { isSuccess = 0, Partyid = id });
@@ -94,7 +94,7 @@ namespace Exercise_03.Controllers
             return View("ProductRate");
         }
 
-        public async Task<IActionResult> DeLProductRate(int id, ProductRateModel model)
+        public async Task<IActionResult> DeLProductRate(long id, ProductRateModel model)
         {
 
             bool isDeleted = await _productRateRepository.DeleteProductRate(model, id);

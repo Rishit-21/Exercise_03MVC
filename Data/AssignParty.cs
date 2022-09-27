@@ -9,18 +9,18 @@ namespace Exercise_03.Data
 {
     public class AssignParty
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Display(Name = "Party")]
         [Required]
         [ForeignKey("Party")]
-        public int PartyId { get; set; }
+        public long PartyId { get; set; }
 
 
         [Display(Name = "Product")]
         [Required]
         [ForeignKey("Product")]
-        public int ProductId { get; set; }
+        public long ProductId { get; set; }
 
         public Party Party { get; set; }
 

@@ -10,14 +10,14 @@ namespace Exercise_03.Models
 {
     public class ProductRateModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
 
 
         [Display(Name = "Product")]
         [Required]
         [ForeignKey("Product")]
-        public int ProductId { get; set; }
+        public long ProductId { get; set; }
 
         [Display(Name = "Product Rate")]
         [Required]

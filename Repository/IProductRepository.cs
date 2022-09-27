@@ -9,8 +9,8 @@ namespace Exercise_03.Repository
     public interface IProductRepository
     {
         Task<List<ProductModel>> GetAllProducts();
-        Task<int> AddProduct(ProductModel model);
-        Task<int> UpdateProduct(ProductModel model, int id);
-        Task<bool> DeleteProduct(ProductModel model, int id);
+        Task<long> AddProduct(ProductModel model);
+        Task<long> UpdateProduct(ProductModel model, long id);
+        Task<bool> DeleteProduct(ProductModel model, long id);
     }
 }

@@ -8,7 +8,7 @@ namespace Exercise_03.Models
 {
     public class partyModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Display(Name ="Party Name")]
         [Required(ErrorMessage ="Enter party Name")]

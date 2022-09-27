@@ -27,7 +27,7 @@ namespace Exercise_03.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Invoice(int id, int grandTotal = 0, bool isSuccess = false)
+        public async Task<IActionResult> Invoice(long id, long grandTotal = 0, bool isSuccess = false)
         {
 
             if (isSuccess == true)
@@ -52,20 +52,20 @@ namespace Exercise_03.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Invoice(int PartyId, InvoiceModel model)
+        public async Task<IActionResult> Invoice(long PartyId, InvoiceModel model)
         {
-            
-                int GrandTotal = 0;
-                if (ModelState.IsValid)
-                {
-                    GrandTotal = await _invoiceRepository.AddInvoice(model, PartyId);
 
-                }
-                return RedirectToAction(nameof(Invoice), new { isSuccess = true, grandTotal = GrandTotal, id = PartyId });
+            long GrandTotal = 0;
+            if (ModelState.IsValid)
+            {
+                GrandTotal = await _invoiceRepository.AddInvoice(model, PartyId);
 
-          
-           
-           
+            }
+            return RedirectToAction(nameof(Invoice), new { isSuccess = true, grandTotal = GrandTotal, id = PartyId });
+
+
+
+
 
         }
 
@@ -77,7 +77,7 @@ namespace Exercise_03.Controllers
 
 
         [HttpGet]
-        public async Task<JsonResult> BindProductDetails(int PartyId)
+        public async Task<JsonResult> BindProductDetails(long PartyId)
         {
             //List<prodList> products = new List<prodList>();
 
@@ -85,7 +85,7 @@ namespace Exercise_03.Controllers
             return Json(products);
         }
         [HttpGet]
-        public async Task<JsonResult> BindProductRateDetails(int ProductId)
+        public async Task<JsonResult> BindProductRateDetails(long ProductId)
         {
             //List<prodList> products = new List<prodList>();
             var rates = await _invoiceRepository.BindRate(ProductId);

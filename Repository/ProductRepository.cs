@@ -29,7 +29,7 @@ namespace Exercise_03.Repository
             }).ToListAsync();
         }
 
-        public async Task<int> AddProduct(ProductModel model)
+        public async Task<long> AddProduct(ProductModel model)
         {
 
             var y = _partyProductDbContext.Product
@@ -50,7 +50,7 @@ namespace Exercise_03.Repository
 
         }
 
-        public async Task<int> UpdateProduct(ProductModel model, int id)
+        public async Task<long> UpdateProduct(ProductModel model, long id)
         {
             var y = _partyProductDbContext.Product
                     .Where(x => x.productName == model.productName).FirstOrDefault();
@@ -73,7 +73,7 @@ namespace Exercise_03.Repository
         }
 
 
-        public async Task<bool> DeleteProduct(ProductModel model, int id)
+        public async Task<bool> DeleteProduct(ProductModel model, long id)
         {
             //if (id == model.Id)
             //{
