@@ -1,0 +1,94 @@
+﻿@model partyModel
+
+@{
+    string action;
+    var model = Model;
+}
+
+<div class="container">
+    <div class="clsAddParty">
+        @if (ViewBag.id == 0)
+            {
+                action = "AddParty";
+                <label class="h2">Add Party</label>
+            }
+            else if (ViewBag.id > 0)
+            {
+                action = "EditParty";
+                <label class="h2">Update Party</label>
+            }
+            else
+            {
+                action = "AddParty";
+                <label class="h2">Add Party</label>
+            }
+
+    </div>
+    <div class="w-100 align-content-center">
+        @if (ViewBag.isSuccess == 0)
+        {
+            if (ViewBag.id == 0)
+            {
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Congratulations</strong> You added new Party successfully.
+                </div>
+
+            }
+            else
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Congratulations</strong> You updated  Party successfully.
+                </div>
+            }
+
+        }
+        else if (ViewBag.isSuccess == 1)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Opps</strong> Your Party is  Already There
+            </div>
+        }
+
+        @*@if (ViewBag.IsSuccess == 1)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Congratulations</strong> You added new Party <strong>@ViewBag.partyName</strong> successfully.
+            </div>
+        }
+        else if (ViewBag.IsSuccess == 2)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                This <strong>Party</strong> is already Exist.
+            </div>
+        }*@
+    </div>
+    <div class="add-party-main-div">
+        <form asp-action="@action" asp-controller="Party" enctype="multipart/form-data">
+            <div class=" add-party-txt-div">
+                <label asp-for="partyName"></label>
+                @if (ViewBag.id != 0)
+                {
+                    <input asp-for="partyName" class="add-party-txt test" />
+
+                }
+                else
+                {
+                    <input asp-for="partyName" class=" add-party-txt" />
+                }
+                <span asp-validation-for="partyName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group addPartyBtns">
+
+
+                <input type="submit" value="Save" class="btn btn-primary saveBtn" />
+
+
+                <a  asp-controller="Party" asp-action="Party" value="Cancel" class="btn btn-danger cancelBtn" >Cancel</a>
+            </div>
+
+        </form>
+    </div>
+
+</div>

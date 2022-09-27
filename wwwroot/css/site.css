@@ -1,0 +1,288 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+  
+}
+
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+.main-heading-div {
+    text-align: center;
+}
+
+
+
+
+
+.Add-btn {
+  
+    float:right;
+    width: 20%;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+    text-align: center;
+    margin:5% 0 10% 0;
+    color:white;
+  
+}
+
+
+:hover.Add-btn {
+    background-color: #ed9313;
+    cursor: pointer;
+    color: white;
+}
+
+/* AddParty page css*/
+.clsAddParty {
+    justify-content: center;
+    text-align: center;
+    margin-top: 3%;
+}
+
+.add-party-main-div {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    font-size: 18px;
+    padding: 15px 15px;
+    line-height: 10px
+}
+
+.addPartyBtns {
+    margin:5% 0 0 0;
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+/*Genral btns*/
+.saveBtn {
+    width: 80px;
+    height: 40px;
+    background-color: #449d44;
+    color: white;
+    border-color: #327c39;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+:hover.saveBtn {
+    background-color: #327c39;
+}
+
+.updateBtn {
+    width: 80px;
+    height: 40px;
+    background-color: #449d44;
+    color: white;
+    border-color: #327c39;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+:hover.updateBtn {
+    background-color: #327c39;
+}
+
+.CancelBtn {
+    width: 80px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+:hover.CancelBtn {
+    border: solid 2px black;
+}
+
+
+
+
+/* AddProduct pge css*/
+
+.clsAddProduct {
+    justify-content: center;
+    text-align: center;
+    margin-top: 3%;
+}
+
+.add-product-main-div {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    font-size: 18px;
+    padding: 15px 15px;
+    line-height: 10px
+}
+
+.addProductBtns {
+    margin: 5% 0 0 0;
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+/*Add Assign Party page css*/
+.clsAddAssignParty{
+    justify-content: center;
+    text-align: center;
+    margin-top: 3%;
+}
+
+
+
+.add-Assign-main-div {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    font-size: 18px;
+    padding: 15px 15px;
+    line-height: 10px
+}
+
+.addAssignBtns {
+    margin: 5% 0 0 0;
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+/*Add product Rate page css*/
+
+.AddProdRateDrpDiv{
+    display:flex;
+    width:100%;
+    
+}
+
+.AddProdRateDrpLbl{
+  line-height:30px;
+  width:100%;
+}
+.AddProdRateDrp{
+    width:150%;
+}
+.clsAddProductRate {
+    justify-content: center;
+    text-align: center;
+    margin-top: 3%;
+}
+.add-productRate-txt-div{
+    align-items:center;
+    line-height:25px;
+}
+
+
+.add-productRate-main-div {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    font-size: 18px;
+    padding: 15px 15px;
+    line-height: 10px
+}
+
+.addProductRateBtns {
+    margin: 5% 0 0 0;
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+/*For Invoice*/
+
+/*.clsAddInvoice {
+    justify-content: center;
+    text-align: center;
+    margin-top: 3%;
+}*/
+/*.add-Invoice-main-div {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    font-size: 18px;
+    padding: 15px 15px;
+    line-height: 10px
+}*/
+/*.AddInvoiceDrp {
+    width: 150%;
+}*/
+/*.AddInvoiceDrpLbl {
+    line-height: 30px;
+    width: 100%;
+}
+.add-productRate-txt-div{
+    margin:20px 0 0 0;
+   width:100%;
+   padding-bottom:20px;
+   align-content:center;
+}*/

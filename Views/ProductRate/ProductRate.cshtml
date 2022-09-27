@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProductRateModel>
+
+<div class="container">
+
+    <div class="main-heading-div">
+        <label class="h2 main-heading ">Product Rate</label>
+    </div>
+    <div class="Add-btn-div">
+        <a asp-controller="ProductRate" asp-action="AddProductRate" class="btn btn-block Add-btn">
+            Add Product Rate
+        </a>
+    </div>
+    <div class="Partytbl table-center">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ProductRate ID</th>
+                    <th>Product Name</th>
+                    <th>Product Rate</th>
+                    <th>Date Of Rate</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                    {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Product.productName</td>
+                    <td>@item.ProductRates</td>
+                    <td>@item.DateOfRate.ToShortDateString()</td>
+                    <td>
+                        <a data-value="@item.Id"
+                           class="btn-outline-primary btn btn-primary" asp-action="UpdateProductRate" asp-controller="ProductRate" asp-route-id="@item.Id" asp-route-RateProductName="@item.ProductId" asp-route-ProductRate="@item.ProductRates" >Edit</a>
+                        <a data-value="@item.Id"
+                           class="btn-danger btn btn-outline " asp-action="DeLProductRate" asp-controller="ProductRate" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

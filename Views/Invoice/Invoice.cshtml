@@ -1,0 +1,169 @@
+﻿@model InvoiceModel
+@inject Exercise_03.Repository.IPartyAssignRepository partyAssignRepo
+
+
+<div class="container">
+    <div class="clsAddInvoice">
+
+        <label class="h2">Add Invoice</label>
+
+    </div>
+    <div class="w-100 align-content-center">
+
+        @*<span class="text-primary text-center text-success">Your Party Assigned Added succesfully</span>*@
+
+
+    </div>
+    <div class="add-Invoice-main-div">
+        <form method="post" enctype="multipart/form-data" asp-action="Invoice" asp-controller="Invoice">
+            <div class="form-group row justify-content-center">
+                <label class="col-sm-2 col-form-label">Party Name :</label>
+                <select class="form-control col-sm-4" id="ddlParty" asp-for="partyId"
+                        asp-items="(await partyAssignRepo.GetAllAssignUniqueParty()).Select(x=>  new SelectListItem() {Value=x.PartyId.ToString(),Text = x.Party.partyName })">
+                    <option value="">Choose your Party</option>
+                </select>
+
+                <span asp-validation-for="partyId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                <label class="col-sm-2 col-form-label">Product</label>
+                <select class="form-control col-sm-4" id="ddlProuct" asp-for="productId">
+                    @*<option value="">Choose Your Product</option>*@
+                </select>
+                <span asp-validation-for="productId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                <label class="col-sm-2 col-form-label" asp-for="CurrentRate"></label>
+                <input class=" form-control col-sm-4" asp-for="CurrentRate" id="CurRate" value="@ViewBag.rates" />
+                <span asp-validation-for="CurrentRate" class="text-danger"></span>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label class="col-sm-2 col-form-label" asp-for="Quantity">Quantity</label>
+                <input class="form-control col-sm-4" asp-for="Quantity" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row justify-content-center addAssignBtns">
+
+                <input type="submit" value="Save" class="btn btn-primary saveBtn" onclick="" />
+                @*<input type="submit" value="Cancel" class="btn btn-danger cancelBtn" />*@
+            </div>
+
+        </form>
+    </div>
+
+
+    @if (ViewBag.Display == true)
+    {
+
+        <partial name="_InvoiceDisplay" model="(List<InvoiceModel>)ViewBag.InvoiceTable" />
+    }
+    </div>
+    @*asp-items="(await _languageRepo.GetLanguages()).Select(x=> new SelectListItem() { Text=x.Name,Value=x.Id.ToString()})"*@
+
+    @*<script src="~/Scripts/jquery-1.10.2.js"></script>*@
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    @*<script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    <script>
+
+        $(document).ready(function () {
+            function PartyId() {
+                $.ajax({
+                    url: "https://localhost:44326/Invoice/Invoice",
+                    type: 'POST',
+                    //dataType: 'json',
+                    data: { PartyId: PartyId },
+
+                })
+
+            }
+
+            //    var ddlCountry = $('#');
+            //    $.ajax({
+            //        url: 'http://localhost:54188/Invoice/BindProductDetails/',
+            //        type: 'GET',
+            //        dataType: 'json',
+            //        success: function (d) {
+            //            $.each(d, function (i, country) {
+            //                ddlCountry.append($("<option></option>").val(country.CountryId).html(country.CountryName));
+            //            });
+            //        },
+            //        error: function () {
+            //            alert('Error!');
+            //        }
+            //    });
+
+            //State details by country id
+
+            $("#ddlParty").change(function () {
+                var PartyId = parseInt($(this).val());
+                var PartyId = $('#ddlParty option:selected').val();
+                console.log("hello")
+                console.log(PartyId)
+                if (!isNaN(PartyId)) {
+                    var ddlProuct = $('#ddlProuct');
+                    ddlProuct.empty();
+                    ddlProuct.append($("<option></option>").val('').html('Please wait ...'));
+                    //debugger;
+                    $.ajax({
+                        url: "https://localhost:44326/Invoice/BindProductDetails",
+                        type: 'GET',
+                        //dataType: 'json',
+                        data: { PartyId: PartyId },
+                        success: function (d) {
+                            //debugger;
+                            ddlProuct.empty(); // Clear the please wait
+                            ddlProuct.append($("<option></option>").val('').html('Select product'));
+                            $.each(d, function (i, products) {
+                                ddlProuct.append($("<option></option>").val(products.productId).html(products.productName))
+                            });
+                        },
+                        error: function () {
+                            alert('Error!');
+                        }
+                    });
+                }
+
+
+            });
+
+
+            $("#ddlProuct").change(function () {
+                var productId = parseInt($(this).val());
+                var productId = $('#ddlProuct option:selected').val();
+                console.log(productId)
+                if (!isNaN(productId)) {
+                    var CurRate = $('#CurRate');
+                    //CurRate.append($("Text").val(""));
+
+                    //debugger;
+                    $.ajax({
+                        url: 'https://localhost:44326/Invoice/BindProductRateDetails',
+                        type: 'GET',
+                        //dataType: 'json',
+                        data: { productId: productId },
+                        success: function (d) {
+
+                            //debugger;
+                            CurRate.empty(); // Clear the plese wait
+                            //CurRate.val('Select City Name'));
+                            console.log(productId)
+                            CurRate.val(d);
+                            //$.each(d, function (i, rates) {
+                            //    CurRate.val(rates.ProductRates);
+                            //});
+                        },
+                        error: function () {
+                            alert('Error!');
+                        }
+                    });
+                }
+
+
+            });
+        });
+    </script>

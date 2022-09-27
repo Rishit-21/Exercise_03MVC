@@ -1,0 +1,167 @@
+﻿@model AssignPartyModel
+
+@inject Exercise_03.Repository.IPartyRepository _PartyRepo
+@inject Exercise_03.Repository.IProductRepository _ProductRepo
+
+@{
+    string action;
+    var model = Model;
+}
+
+<div class="container">
+    <div class="clsAddAssignParty">
+
+
+        @if (ViewBag.id == 0)
+        {
+            action = "AddAssignParty";
+            <label class="h2">Add AssignParty</label>
+        }
+        else if (ViewBag.id > 0)
+        {
+            action = "UpdateAssignParty";
+            <label class="h2">Update AssignParty</label>
+        }
+        else
+        {
+            action = "AddAssignParty";
+            <label class="h2">Add AssignParty</label>
+        }
+
+    </div>
+    <div class="w-100 align-content-center">
+        @if (ViewBag.isSuccess == 0)
+        {
+            if (ViewBag.id == 0)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Congratulations</strong> You added new  Assign  Party successfully.
+                </div>
+
+            }
+            else
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Congratulations</strong> You AssignParty updated successfully.
+                </div>
+            }
+
+        }
+        else if (ViewBag.isSuccess == 1)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Opps</strong> Your Party is Already Assign To  this product
+            </div>
+        }
+    </div>
+    <div class="add-assign-main-div">
+        <form method="post" asp-action="@action" asp-controller="PartyAssign" enctype="multipart/form-data">
+            <div class="form-group ">
+
+                <label asp-for="PartyId"></label>
+                <select class="form-control AddAssignDrp" asp-for="PartyId" id="partyDll"
+                        asp-items="(await _PartyRepo.GetAllParties()).Select(x=> new SelectListItem() {Value=x.Id.ToString(),Text = x.partyName })">
+
+                    <option value="">Choose your Party</option>
+                </select>
+
+                <span asp-validation-for="PartyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductId"></label>
+                <select class="form-control  AddAssignDrp" asp-for="ProductId" id="prodctDll">
+                    <option value="">Choose Your Product</option>
+                </select>
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group addAssignBtns">
+                <input type="submit" value="Update" class="btn btn-primary updateBtn" hidden />
+                <input type="submit" value="Save" class="btn btn-primary saveBtn" />
+                <a class="btn btn-danger  cancelBtn" asp-action="PartyAssign" asp-controller="PartyAssign">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/lib/jquery/jquery.min.js"></script>
+@*<script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+@if (action == "AddAssignParty")
+{
+    <script>
+        $("#partyDll").change(function () {
+            var PartyId = parseInt($(this).val());
+            var PartyId = $('#partyDll option:selected').val();
+            console.log("hello")
+            console.log(PartyId)
+            if (!isNaN(PartyId)) {
+                var ddlProuct = $('#prodctDll');
+                ddlProuct.empty();
+                ddlProuct.append($("<option></option>").val('').html('Please wait ...'));
+                debugger;
+                $.ajax({
+                    url: "https://localhost:44326/PartyAssign/NotAssigendProduct",
+                    type: 'GET',
+                    //dataType: 'json',
+                    data: { PartyId: PartyId },
+                    success: function (d) {
+                        debugger;
+                        ddlProuct.empty(); // Clear the please wait
+                        ddlProuct.append($("<option></option>").val('').html('Select product'));
+                        $.each(d, function (i, products) {
+                            ddlProuct.append($("<option></option>").val(products.id).html(products.productName))
+                        });
+                    },
+                    error: function () {
+                        alert('Error!');
+                    }
+                });
+            }
+
+
+        });
+    </script>
+}
+else
+{
+    <script>
+        $(document).ready(function () {
+            /*var PartyId = parseInt($(this).val());*/
+            var PartyId = $('#partyDll option:selected').val();
+            console.log("hello")
+            console.log(PartyId)
+            if (!isNaN(PartyId)) {
+                var ddlProuct = $('#prodctDll');
+                ddlProuct.empty();
+                ddlProuct.append($("<option></option>").val('').html('Please wait ...'));
+                //debugger;
+                $.ajax({
+                    url: "https://localhost:44326/PartyAssign/NotAssigendProduct",
+                    type: 'GET',
+                    //dataType: 'json',
+                    data: { PartyId: PartyId },
+                    success: function (d) {
+                        //debugger;
+                        ddlProuct.empty(); // Clear the please wait
+                        ddlProuct.append($("<option></option>").val('').html('Select product'));
+                        $.each(d, function (i, products) {
+                            ddlProuct.append($("<option></option>").val(products.id).html(products.productName))
+                        });
+                    },
+                    error: function () {
+                        alert('Error!');
+                    }
+                });
+            }
+
+
+        });
+    </script>
+}
+
+
+
+@*asp-items="(await _languageRepo.GetLanguages()).Select(x=> new SelectListItem() { Text=x.Name,Value=x.Id.ToString()})"*@

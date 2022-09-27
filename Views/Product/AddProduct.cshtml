@@ -1,0 +1,125 @@
+﻿@model ProductModel
+@{
+    string action;
+}
+<div class="container">
+    <div class="clsAddProduct">
+        @if (ViewBag.id == 0)
+        {
+            action = "AddProduct";
+            <label class="h2">Add Product</label>
+        }
+        else if (ViewBag.id > 0)
+        {
+            action = "EditProduct";
+            <label class="h2">Update Product</label>
+        }
+        else
+        {
+            action = "AddProduct";
+            <label class="h2">Add Product</label>
+        }
+    </div>
+    <div class="w-100 align-content-center ">
+        @if (ViewBag.isSuccess == 0)
+        {
+            if (ViewBag.id == 0)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Congratulations</strong> You added new Product successfully.
+                </div>
+
+            }
+            else
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Congratulations</strong> Your Product updated successfully.
+                </div>
+            }
+
+        }
+        else if (ViewBag.isSuccess == 1)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Opps</strong> Your Product is  Already There
+            </div>
+        }
+    </div>
+    <div class="add-product-main-div">
+        <form asp-action="@action" asp-controller="Product" enctype="multipart/form-data">
+            <div class=" add-product-txt-div">
+
+                <label asp-for="productName"></label>
+                <input asp-for="productName" class="add-party-txt test" />
+                <span asp-validation-for="productName" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group addProductBtns">
+                <input type="submit" value="Save" class="btn btn-primary saveBtn" />
+                <a class="btn btn-danger cancelBtn" asp-action="Product" asp-controller="Product">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+
+
+@*@model partyModel
+
+    @{
+        string action;
+    }
+
+    <div class="container">
+        <div class="clsAddParty">
+            @if (ViewBag.id == 0)
+            {
+                action = "AddParty";
+                <label class="h2">Add Party</label>
+            }
+            else
+            {
+                action = "EditParty";
+                <label class="h2">Update Party</label>
+            }
+        </div>
+        <div class="w-100 align-content-center">
+            @if (ViewBag.isSuccess == true)
+            {
+                if (ViewBag.id == 0)
+                {
+                    <span class="text-primary text-center text-success">Your Party Added succesfully</span>
+
+                }
+                else
+                {
+                    <span class="text-primary text-center text-success">Your Party Updated succesfully</span>
+                }
+
+            }
+        </div>
+        <div class="add-party-main-div">
+            <form asp-action="@action" asp-controller="Party" enctype="multipart/form-data">
+                <div class=" add-party-txt-div">
+                    <label asp-for="partyName"></label>
+                    <input asp-for="partyName" class=" add-party-txt" />
+                    <span asp-validation-for="partyName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group addPartyBtns">
+
+
+                    <input type="submit" value="Save" class="btn btn-primary saveBtn" />
+
+
+                    <input type="submit" asp-controller="Party" asp-action="Party" value="Cancel" class="btn btn-danger cancelBtn" />
+                </div>
+
+            </form>
+        </div>
+
+    </div>*@
