@@ -50,32 +50,22 @@
             </div>
         }
 
-        @*@if (ViewBag.IsSuccess == 1)
-        {
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Congratulations</strong> You added new Party <strong>@ViewBag.partyName</strong> successfully.
-            </div>
-        }
-        else if (ViewBag.IsSuccess == 2)
-        {
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                This <strong>Party</strong> is already Exist.
-            </div>
-        }*@
+   
     </div>
     <div class="add-party-main-div">
         <form asp-action="@action" asp-controller="Party" enctype="multipart/form-data">
             <div class=" add-party-txt-div">
                 <label asp-for="partyName"></label>
-                @if (ViewBag.id != 0)
+               @if (ViewBag.isSuccess == 0 && ViewBag.id>0)
                 {
-                    <input asp-for="partyName" class="add-party-txt test" />
-
+                    <input asp-for="partyName" class="add-party-txt test" disabled style="color:dimgrey"value="" />
+                   
                 }
                 else
                 {
                     <input asp-for="partyName" class=" add-party-txt" />
                 }
+                
                 <span asp-validation-for="partyName" class="text-danger"></span>
             </div>
 

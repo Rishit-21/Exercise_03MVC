@@ -29,7 +29,7 @@ namespace Exercise_03.Controllers
         [HttpGet]
         public async Task<IActionResult> Invoice(long id, long grandTotal = 0, bool isSuccess = false)
         {
-
+            ViewBag.isSuccess = isSuccess;
             if (isSuccess == true)
             {
                 ViewBag.InvoiceTable = await _invoiceRepository.ShowInvoice(id);

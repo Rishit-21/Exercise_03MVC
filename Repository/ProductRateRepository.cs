@@ -61,20 +61,20 @@ namespace Exercise_03.Repository
         public async Task<long> UpdateProductRate(ProductRateModel model, long id)
         {
             var y = _partyProductDbContext.ProductRate
-                 .Where(x => x.ProductId == model.ProductId && x.ProductRates==model.ProductRates).FirstOrDefault();
-            if (y==null)
+                 .Where(x => x.ProductId == model.ProductId && x.ProductRates == model.ProductRates).FirstOrDefault();
+            if (y == null)
             {
-            var UpdateProductRate = new ProductRate()
-            {
-                Id = id,
-                ProductRates = model.ProductRates,
-                DateOfRate = DateTime.Now,
-                ProductId = model.ProductId
+                var UpdateProductRate = new ProductRate()
+                {
+                    Id = id,
+                    ProductRates = model.ProductRates,
+                    DateOfRate = DateTime.Now,
+                    ProductId = model.ProductId
 
 
-            };
-            _partyProductDbContext.ProductRate.Update(UpdateProductRate);
-            await _partyProductDbContext.SaveChangesAsync();
+                };
+                _partyProductDbContext.ProductRate.Update(UpdateProductRate);
+                await _partyProductDbContext.SaveChangesAsync();
                 return 1;
 
             }

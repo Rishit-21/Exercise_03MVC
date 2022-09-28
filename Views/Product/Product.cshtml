@@ -1,4 +1,4 @@
-﻿@model  IEnumerable<ProductModel> 
+﻿@model IEnumerable<ProductModel>
 
 <div class="container">
 
@@ -21,18 +21,18 @@
             </thead>
             <tbody>
                 @foreach (var item in @Model)
-                    {
+                {
                     <tr>
                         <th scope="row">@item.Id</th>
                         <td>@item.productName</td>
                         <td>
                             <a data-value="@item.Id"
-                               class="btn-outline-primary btn btn-primary" asp-controller="Product"  asp-action="EditProduct"  asp-route-id="@item.Id" asp-route-name="@item.productName">Edit</a>
-                            <a data-value="@item.Id" asp-controller="Product" asp-action="DelProduct" asp-route-Id="@item.Id"
-                              class="btn-danger btn-outline btn">Delete</a>
+                               class="btn-outline-primary btn btn-primary" asp-controller="Product" asp-action="EditProduct" asp-route-id="@item.Id" asp-route-name="@item.productName">Edit</a>
+                            <a data-value="@item.Id" asp-controller="Product" asp-action="DelProduct" asp-route-Id="@item.Id" onclick="return confirm('sure...?')"
+                               class="btn-danger btn-outline btn">Delete</a>
                         </td>
                     </tr>
-                    }
+                }
             </tbody>
         </table>
     </div>

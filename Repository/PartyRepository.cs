@@ -47,9 +47,9 @@ namespace Exercise_03.Repository
             }
             return 0;
 
-        } 
+        }
 
-       
+
         public async Task<long> UpdateParty(partyModel model, long id)
         {
             var y = _partyProductDbContext.Party

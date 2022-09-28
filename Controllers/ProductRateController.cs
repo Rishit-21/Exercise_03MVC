@@ -58,9 +58,9 @@ namespace Exercise_03.Controllers
 
 
         [HttpGet("UpdateProductRate/{id}/{RateProductName}/{ProductRate}")]
-        public IActionResult UpdateProductRate([FromRoute] long id, [FromRoute] long RateProductName, [FromRoute] double ProductRate  , int isSuccess = 2)
+        public IActionResult UpdateProductRate([FromRoute] long id, [FromRoute] long RateProductName, [FromRoute] double ProductRate, int isSuccess = 2)
         {
-            //ViewBag.isSuccess = isSuccess;
+            ViewBag.isSuccess = isSuccess;
             ViewBag.id = id;
             //ViewBag.AssignPartyName = AssignPartyName;
             //ViewBag.AssignProductName = AssignProductName;
@@ -73,7 +73,7 @@ namespace Exercise_03.Controllers
             };
 
 
-            return View("AddProductRate",productRateModel);
+            return View("AddProductRate", productRateModel);
         }
 
 
@@ -83,7 +83,7 @@ namespace Exercise_03.Controllers
 
             if (ModelState.IsValid)
             {
-                long Id =  await _productRateRepository.UpdateProductRate(model, id);
+                long Id = await _productRateRepository.UpdateProductRate(model, id);
                 if (Id > 0)
                 {
                     return RedirectToAction(nameof(ProductRate), new { isSuccess = 0, Partyid = id });

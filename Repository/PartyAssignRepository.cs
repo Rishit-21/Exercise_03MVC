@@ -61,16 +61,16 @@ namespace Exercise_03.Repository
 
             if (y == null)
             {
-            var newAssignParty = new AssignParty()
-            {
-                Id = id,
-                PartyId = model.PartyId,
-                ProductId = model.ProductId
+                var newAssignParty = new AssignParty()
+                {
+                    Id = id,
+                    PartyId = model.PartyId,
+                    ProductId = model.ProductId
 
 
-            };
-            _partyProductDbContext.AssignParty.Update(newAssignParty);
-            await _partyProductDbContext.SaveChangesAsync();
+                };
+                _partyProductDbContext.AssignParty.Update(newAssignParty);
+                await _partyProductDbContext.SaveChangesAsync();
                 return 1;
             }
             return 0;
@@ -103,15 +103,15 @@ namespace Exercise_03.Repository
             }
              ).Distinct().ToListAsync();
 
-          
+
         }
         public async Task<List<ProductModel>> getNotAssigendProduct(long partyId)
         {
             var products = await _partyProductDbContext.Product.Except(_partyProductDbContext.AssignParty.Where(x => x.PartyId == partyId).Include(x => x.Product).Select(x => x.Product)).ToListAsync();
-          
+
             return _mapper.Map<List<ProductModel>>(products);
 
-           
+
         }
     }
 }

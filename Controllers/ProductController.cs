@@ -51,13 +51,13 @@ namespace Exercise_03.Controllers
                 }
                 return RedirectToAction(nameof(AddProduct), new { isSuccess = 1, Productid = id });
             }
-           
+
             return View();
         }
 
 
         [HttpGet("/EditProduct/{id}/{name}")]
-        public async Task<IActionResult> EditProduct([FromRoute] long id,[FromRoute] string name ,ProductModel model, int isSuccess = 2)
+        public async Task<IActionResult> EditProduct([FromRoute] long id, [FromRoute] string name, ProductModel model, int isSuccess = 2)
         {
             ViewBag.isSuccess = isSuccess;
             ViewBag.id = id;
@@ -65,7 +65,7 @@ namespace Exercise_03.Controllers
 
             ProductModel productModel = new ProductModel()
             {
-               productName=name
+                productName = name
             };
             //ViewBag.name = name;
 

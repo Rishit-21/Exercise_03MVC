@@ -28,7 +28,7 @@ namespace Exercise_03
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
             //    .AddViewOptions(option=> 
-            //{
+            //{d
             //    option.HtmlHelperOptions.ClientValidationEnabled = false;
             //});
 #endif

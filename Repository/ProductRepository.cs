@@ -57,16 +57,16 @@ namespace Exercise_03.Repository
 
             if (y == null)
             {
-            var Product = new Product()
-            {
-                Id = id,
-                productName = model.productName,
+                var Product = new Product()
+                {
+                    Id = id,
+                    productName = model.productName,
 
-            };
+                };
 
 
-            _partyProductDbContext.Product.Update(Product);
-            await _partyProductDbContext.SaveChangesAsync();
+                _partyProductDbContext.Product.Update(Product);
+                await _partyProductDbContext.SaveChangesAsync();
                 return 1;
             }
             return 0;

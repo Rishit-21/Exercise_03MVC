@@ -51,8 +51,8 @@ namespace Exercise_03.Controllers
                     return RedirectToAction(nameof(AddAssignParty), new { isSuccess = 0, Partyid = id });
                 }
                 return RedirectToAction(nameof(AddAssignParty), new { isSuccess = 1, Partyid = id });
-               // ViewBag.isSucces = true;
-               // ViewBag.id = 0;
+                // ViewBag.isSucces = true;
+                // ViewBag.id = 0;
             }
 
             return View();
@@ -62,7 +62,7 @@ namespace Exercise_03.Controllers
         [HttpGet("UpdateAssignParty/{id}/{AssignPartyName}/{AssignProductName}")]
         public IActionResult UpdateAssignParty(int AssignPartyName, int AssignProductName, int isSuccess = 2, [FromRoute] int id = 0)
         {
-            //ViewBag.isSuccess = isSuccess;
+            ViewBag.isSuccess = isSuccess;
             ViewBag.id = id;
             //ViewBag.AssignPartyName = AssignPartyName;
             //ViewBag.AssignProductName = AssignProductName;

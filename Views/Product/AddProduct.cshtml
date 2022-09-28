@@ -50,7 +50,15 @@
             <div class=" add-product-txt-div">
 
                 <label asp-for="productName"></label>
-                <input asp-for="productName" class="add-party-txt test" />
+                @if (ViewBag.isSuccess == 0 && ViewBag.id > 0)
+                {
+
+                    <input asp-for="productName" class="add-party-txt test" disabled value="" style="color:dimgray" />
+                }
+                else
+                {
+                    <input asp-for="productName" class="add-party-txt test" />
+                }
                 <span asp-validation-for="productName" class="text-danger"></span>
 
             </div>

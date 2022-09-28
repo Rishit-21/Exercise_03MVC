@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise_03.Repository
 {
-   public interface IPartyAssignRepository
+    public interface IPartyAssignRepository
     {
         Task<List<AssignPartyModel>> GetAllAssignParty();
         Task<long> AddAssignParty(AssignPartyModel model);

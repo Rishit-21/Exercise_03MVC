@@ -23,20 +23,20 @@
             </thead>
             <tbody>
                 @foreach (var item in Model)
-                    {
-                <tr>
-                    <th scope="row">@item.Id</th>
-                    <td>@item.Product.productName</td>
-                    <td>@item.ProductRates</td>
-                    <td>@item.DateOfRate.ToShortDateString()</td>
-                    <td>
-                        <a data-value="@item.Id"
-                           class="btn-outline-primary btn btn-primary" asp-action="UpdateProductRate" asp-controller="ProductRate" asp-route-id="@item.Id" asp-route-RateProductName="@item.ProductId" asp-route-ProductRate="@item.ProductRates" >Edit</a>
-                        <a data-value="@item.Id"
-                           class="btn-danger btn btn-outline " asp-action="DeLProductRate" asp-controller="ProductRate" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
-                    }
+                {
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <td>@item.Product.productName</td>
+                        <td>@item.ProductRates</td>
+                        <td>@item.DateOfRate.ToShortDateString()</td>
+                        <td>
+                            <a data-value="@item.Id"
+                               class="btn-outline-primary btn btn-primary" asp-action="UpdateProductRate" asp-controller="ProductRate" asp-route-id="@item.Id" asp-route-RateProductName="@item.ProductId" asp-route-ProductRate="@item.ProductRates">Edit</a>
+                            <a data-value="@item.Id"
+                               class="btn-danger btn btn-outline " asp-action="DeLProductRate" asp-controller="ProductRate" asp-route-id="@item.Id" onclick="return confirm('sure...?')">Delete</a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

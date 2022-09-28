@@ -69,7 +69,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ProductId"></label>
-                <select class="form-control  AddAssignDrp" asp-for="ProductId" id="prodctDll">
+                <select class="form-control  AddAssignDrp" asp-for="ProductId" id="prodctDll"  asp-items="(await _ProductRepo.GetAllProducts()).Select(x=> new SelectListItem() {Value=x.Id.ToString(),Text = x.productName })">
                     <option value="">Choose Your Product</option>
                 </select>
                 <span asp-validation-for="ProductId" class="text-danger"></span>
@@ -89,8 +89,8 @@
 <script src="~/lib/jquery/jquery.min.js"></script>
 @*<script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>*@
-@if (action == "AddAssignParty")
-{
+@*@if (action == "AddAssignParty")
+{*@
     <script>
         $("#partyDll").change(function () {
             var PartyId = parseInt($(this).val());
@@ -101,7 +101,7 @@
                 var ddlProuct = $('#prodctDll');
                 ddlProuct.empty();
                 ddlProuct.append($("<option></option>").val('').html('Please wait ...'));
-                debugger;
+               debugger;
                 $.ajax({
                     url: "https://localhost:44326/PartyAssign/NotAssigendProduct",
                     type: 'GET',
@@ -124,8 +124,8 @@
 
         });
     </script>
-}
-else
+    @*//}*@
+@*else
 {
     <script>
         $(document).ready(function () {
@@ -156,12 +156,7 @@ else
                     }
                 });
             }
-
-
         });
     </script>
-}
+}*@
 
-
-
-@*asp-items="(await _languageRepo.GetLanguages()).Select(x=> new SelectListItem() { Text=x.Name,Value=x.Id.ToString()})"*@

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Exercise_03.Data
 {
-    public class PartyProductDbContext:DbContext
+    public class PartyProductDbContext : DbContext
     {
         public PartyProductDbContext(DbContextOptions<PartyProductDbContext> options)
-            :base(options)
+            : base(options)
         {
 
         }
@@ -17,7 +17,7 @@ namespace Exercise_03.Data
         public DbSet<Product> Product { get; set; }
 
         public DbSet<AssignParty> AssignParty { get; set; }
-         
+
         public DbSet<ProductRate> ProductRate { get; set; }
 
         public DbSet<Invoice> Invoice { get; set; }
