@@ -4,14 +4,16 @@ using Exercise_03.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Exercise_03.Migrations
 {
     [DbContext(typeof(PartyProductDbContext))]
-    partial class PartyProductDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220929061849_removeUniqueKey")]
+    partial class removeUniqueKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

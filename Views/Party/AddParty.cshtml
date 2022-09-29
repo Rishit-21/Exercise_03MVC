@@ -3,6 +3,7 @@
 @{
     string action;
     var model = Model;
+    bool hidden = false, disabled = false;
 }
 
 <div class="container">
@@ -40,6 +41,8 @@
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>Congratulations</strong> You updated  Party successfully.
                 </div>
+
+                hidden = true;
             }
 
         }
@@ -56,15 +59,11 @@
         <form asp-action="@action" asp-controller="Party" enctype="multipart/form-data">
             <div class=" add-party-txt-div">
                 <label asp-for="partyName"></label>
-               @if (ViewBag.isSuccess == 0 && ViewBag.id>0)
-                {
-                    <input asp-for="partyName" class="add-party-txt test" disabled style="color:dimgrey"value="" />
+              
+                    <input asp-for="partyName" class="add-party-txt test" disabled="@hidden"  />
                    
-                }
-                else
-                {
-                    <input asp-for="partyName" class=" add-party-txt" />
-                }
+              
+             
                 
                 <span asp-validation-for="partyName" class="text-danger"></span>
             </div>
@@ -72,7 +71,7 @@
             <div class="form-group addPartyBtns">
 
 
-                <input type="submit" value="Save" class="btn btn-primary saveBtn" />
+                <input type="submit" value="Save" class="btn btn-primary saveBtn" hidden="@hidden" />
 
 
                 <a  asp-controller="Party" asp-action="Party" value="Cancel" class="btn btn-danger cancelBtn" >Cancel</a>

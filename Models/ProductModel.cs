@@ -11,7 +11,7 @@ namespace Exercise_03.Models
         public long Id { get; set; }
 
         [Display (Name ="Product Name")]
-        [Required]
+        [Required (ErrorMessage ="Enter Product name")]
         public string productName { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace Exercise_03.Models
 
         [Display(Name = "Product")]
         [Required]
-        [ForeignKey("Product")]
         public long ProductId { get; set; }
 
         [Display(Name = "Product Rate")]

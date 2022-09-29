@@ -34,6 +34,7 @@ namespace Exercise_03.Controllers
         public async Task<ViewResult> AddProductRate(int isSuccess = 2, long id = 0)
         {
             ViewBag.isSuccess = isSuccess;
+            ViewBag.disable = false;
             ViewBag.id = id;
             return View();
         }
@@ -61,12 +62,14 @@ namespace Exercise_03.Controllers
         public IActionResult UpdateProductRate([FromRoute] long id, [FromRoute] long RateProductName, [FromRoute] double ProductRate, int isSuccess = 2)
         {
             ViewBag.isSuccess = isSuccess;
+            ViewBag.disable = true;
             ViewBag.id = id;
             //ViewBag.AssignPartyName = AssignPartyName;
             //ViewBag.AssignProductName = AssignProductName;
 
             ProductRateModel productRateModel = new ProductRateModel()
             {
+                Id = id,
                 ProductId = RateProductName,
                 ProductRates = ProductRate,
                 DateOfRate = DateTime.Now,
@@ -77,7 +80,7 @@ namespace Exercise_03.Controllers
         }
 
 
-        [HttpPost("UpdateProductRate/{id}/{RateProductName}/{ProductRate}")]
+        [HttpPost("UpdateProductRate/{id}/{productId}/{ProductRate}")]
         public async Task<IActionResult> UpdateProductRate([FromRoute] long id, ProductRateModel model)
         {
 
@@ -86,9 +89,9 @@ namespace Exercise_03.Controllers
                 long Id = await _productRateRepository.UpdateProductRate(model, id);
                 if (Id > 0)
                 {
-                    return RedirectToAction(nameof(ProductRate), new { isSuccess = 0, Partyid = id });
+                    return RedirectToAction(nameof(UpdateProductRate), new { isSuccess = 0, Partyid = id });
                 }
-                return RedirectToAction(nameof(ProductRate), new { isSuccess = 1, Partyid = id });
+                return RedirectToAction(nameof(UpdateProductRate), new { isSuccess = 1, Partyid = id });
             }
 
             return View("ProductRate");

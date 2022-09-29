@@ -67,9 +67,14 @@ namespace Exercise_03.Controllers
 
             //ViewBag.PartyName = PartyName;
 
+            var model = new partyModel()
+            {
+
+                partyName = PartyName
+            };
 
 
-            return View("AddParty");
+            return View("AddParty", model);
         }
 
 

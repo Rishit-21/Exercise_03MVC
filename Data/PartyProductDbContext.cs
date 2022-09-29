@@ -28,7 +28,7 @@ namespace Exercise_03.Data
             mb.Entity<Product>().HasIndex(x => new { x.productName }).IsUnique(true);
             mb.Entity<AssignParty>().HasIndex(x => new { x.PartyId }).IsUnique(false);
             mb.Entity<AssignParty>().HasIndex(x => new { x.ProductId }).IsUnique(false);
-            mb.Entity<ProductRate>().HasIndex(x => new { x.ProductId }).IsUnique(true);
+            mb.Entity<ProductRate>().HasIndex(x => new { x.ProductId }).IsUnique(false);
         }
     }
 }

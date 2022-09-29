@@ -51,7 +51,7 @@ namespace Exercise_03.Repository
             }
 
             return 0;
-            //var AssignParty = _mapper.Map<AssignParty>(model);
+
         }
 
         public async Task<long> UpdateAssignParty(AssignPartyModel model, long id)
@@ -66,33 +66,24 @@ namespace Exercise_03.Repository
                     Id = id,
                     PartyId = model.PartyId,
                     ProductId = model.ProductId
-
+                 
 
                 };
                 _partyProductDbContext.AssignParty.Update(newAssignParty);
                 await _partyProductDbContext.SaveChangesAsync();
                 return 1;
             }
-            return 0;
-
-
+            return 0;       
         }
-
         public async Task<bool> DeleteAssignParty(AssignPartyModel model, long id)
         {
-            //if (id == model.Id)
-            //{
-
             var AssignParty = new AssignParty()
             {
                 Id = id,
-
-
             };
             _partyProductDbContext.AssignParty.Remove(AssignParty);
             await _partyProductDbContext.SaveChangesAsync();
             return true;
-            //}
         }
         public async Task<List<AssignPartyModel>> GetAllAssignUniqueParty()
         {
@@ -102,16 +93,12 @@ namespace Exercise_03.Repository
                 Party = partyAssign.Party
             }
              ).Distinct().ToListAsync();
-
-
         }
         public async Task<List<ProductModel>> getNotAssigendProduct(long partyId)
         {
             var products = await _partyProductDbContext.Product.Except(_partyProductDbContext.AssignParty.Where(x => x.PartyId == partyId).Include(x => x.Product).Select(x => x.Product)).ToListAsync();
 
             return _mapper.Map<List<ProductModel>>(products);
-
-
         }
     }
 }

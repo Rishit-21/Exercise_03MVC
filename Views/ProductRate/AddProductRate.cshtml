@@ -5,6 +5,8 @@
 @{
     var model = Model;
     string action;
+     bool hidden=false,disable=false;
+
 }
 
 <div class="container">
@@ -20,7 +22,9 @@
         else if (ViewBag.id > 0)
         {
             action = "UpdateProductRate";
+
             <label class="h2">Update Product Rate</label>
+            disable = true;
         }
         else
         {
@@ -44,6 +48,7 @@
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>Congratulations</strong> Your Product Rate updated successfully.
                 </div>
+                 hidden =true ;
             }
 
         }
@@ -64,8 +69,8 @@
                 </div>*@
             <div class="form-group row justify-content-center">
                 <label asp-for="ProductId" class="col-sm-4 col-form-label"></label>
-                <select class="form-control col-sm-7" id="proRate" asp-for="ProductId"
-                        asp-items="(await _prodRepo.GetAllProducts()).Select(x=> new SelectListItem() { Text=x.productName,Value=x.Id.ToString()})">
+                <select class="form-control col-sm-7"  asp-for="ProductId"
+                        asp-items="(await _prodRepo.GetAllProducts()).Select(x=> new SelectListItem() { Text=x.productName,Value=x.Id.ToString()})" readOnly="@ViewBag.disable" >
                     <option value="">Choose Your Product</option>
                 </select>
                 <span asp-validation-for="ProductId" class="text-danger"></span>
@@ -79,13 +84,16 @@
             </div>
             <div class=" add-productRateDate-txt-div">
                 <label asp-for="DateOfRate"></label>
-                <input class=" add-Product-txt" asp-for="DateOfRate" type="datetime" value="@DateTime.Today.ToString("dd-MM-yyyy")" disabled style="color:grey" />
+                <input class=" add-Product-txt" asp-for="DateOfRate" type="datetime" value="@DateTime.Today.ToString("dd-MM-yyyy")" readOnly style="color:grey" />
                 <span asp-validation-for="DateOfRate" class="text-danger"></span>
             </div>
 
             <div class="form-group addProductRateBtns">
+              
+                    <input type="submit" value="Save" class="btn btn-primary saveBtn " hidden="@hidden" />
 
-                <input type="submit" value="Save" class="btn btn-primary saveBtn" />
+              
+             
                 <a asp-action="ProductRate" asp-controller="ProductRate" value="Cancel" class="btn btn-danger  cancelBtn">Cancel</a>
             </div>
 

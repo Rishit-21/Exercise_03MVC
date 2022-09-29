@@ -1,6 +1,7 @@
 ﻿@model ProductModel
 @{
     string action;
+    bool hidden = false;
 }
 <div class="container">
     <div class="clsAddProduct">
@@ -35,6 +36,7 @@
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>Congratulations</strong> Your Product updated successfully.
                 </div>
+                hidden = true;
             }
 
         }
@@ -50,21 +52,14 @@
             <div class=" add-product-txt-div">
 
                 <label asp-for="productName"></label>
-                @if (ViewBag.isSuccess == 0 && ViewBag.id > 0)
-                {
 
-                    <input asp-for="productName" class="add-party-txt test" disabled value="" style="color:dimgray" />
-                }
-                else
-                {
-                    <input asp-for="productName" class="add-party-txt test" />
-                }
+
+                <input asp-for="productName" class="add-party-txt test" disabled="@hidden"  />
                 <span asp-validation-for="productName" class="text-danger"></span>
-
             </div>
 
             <div class="form-group addProductBtns">
-                <input type="submit" value="Save" class="btn btn-primary saveBtn" />
+                <input type="submit" value="Save" class="btn btn-primary saveBtn" hidden="@hidden" />
                 <a class="btn btn-danger cancelBtn" asp-action="Product" asp-controller="Product">Cancel</a>
             </div>
 

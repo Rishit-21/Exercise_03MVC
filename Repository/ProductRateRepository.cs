@@ -60,10 +60,7 @@ namespace Exercise_03.Repository
 
         public async Task<long> UpdateProductRate(ProductRateModel model, long id)
         {
-            var y = _partyProductDbContext.ProductRate
-                 .Where(x => x.ProductId == model.ProductId && x.ProductRates == model.ProductRates).FirstOrDefault();
-            if (y == null)
-            {
+        
                 var UpdateProductRate = new ProductRate()
                 {
                     Id = id,
@@ -77,8 +74,8 @@ namespace Exercise_03.Repository
                 await _partyProductDbContext.SaveChangesAsync();
                 return 1;
 
-            }
-            return 0;
+            
+            //return 0;
         }
 
         public async Task<bool> DeleteProductRate(ProductRateModel model, long id)

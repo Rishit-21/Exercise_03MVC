@@ -56,7 +56,7 @@ namespace Exercise_03.Controllers
         }
 
 
-        [HttpGet("/EditProduct/{id}/{name}")]
+        [HttpGet("/EditProduct/{id}/{productName}")]
         public async Task<IActionResult> EditProduct([FromRoute] long id, [FromRoute] string name, ProductModel model, int isSuccess = 2)
         {
             ViewBag.isSuccess = isSuccess;

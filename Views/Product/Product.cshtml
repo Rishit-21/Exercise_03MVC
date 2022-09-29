@@ -27,7 +27,7 @@
                         <td>@item.productName</td>
                         <td>
                             <a data-value="@item.Id"
-                               class="btn-outline-primary btn btn-primary" asp-controller="Product" asp-action="EditProduct" asp-route-id="@item.Id" asp-route-name="@item.productName">Edit</a>
+                               class="btn-outline-primary btn btn-primary" asp-controller="Product" asp-action="EditProduct" asp-route-id="@item.Id" asp-route-productName="@item.productName">Edit</a>
                             <a data-value="@item.Id" asp-controller="Product" asp-action="DelProduct" asp-route-Id="@item.Id" onclick="return confirm('sure...?')"
                                class="btn-danger btn-outline btn">Delete</a>
                         </td>
