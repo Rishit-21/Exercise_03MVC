@@ -42,11 +42,6 @@ namespace Exercise_03.Controllers
                 ViewBag.Display = false;
                 ViewBag.grandTotal = grandTotal;
             }
-
-
-
-
-
             return View();
 
         }

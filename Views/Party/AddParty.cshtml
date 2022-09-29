@@ -57,15 +57,15 @@
     </div>
     <div class="add-party-main-div">
         <form asp-action="@action" asp-controller="Party" enctype="multipart/form-data">
-            <div class=" add-party-txt-div">
-                <label asp-for="partyName"></label>
+            <div class=" form-group row justify-content-center">
+                <label asp-for="partyName" class="col-sm-2 col-form-label "></label>
               
-                    <input asp-for="partyName" class="add-party-txt test" disabled="@hidden"  />
+                    <input asp-for="partyName" class="form-control col-sm-4  " disabled="@hidden"  />
                    
               
              
                 
-                <span asp-validation-for="partyName" class="text-danger"></span>
+                <span asp-validation-for="partyName" class="text-danger col-sm-3 col-form-label"></span>
             </div>
 
             <div class="form-group addPartyBtns">

@@ -28,7 +28,7 @@
                         <td>@item.Product.productName</td>
                         <td>
                             <a data-value="@item.Id"
-                               class="btn-outline-primary btn btn-primary" asp-action="UpdateAssignParty" asp-controller="PartyAssign" asp-route-id="@item.Id" asp-route-AssignPartyName="@item.PartyId" asp-route-AssignProductName="@item.ProductId">Edit</a>
+                               class="btn-outline-primary btn btn-primary" asp-action="UpdateAssignParty" asp-controller="PartyAssign" asp-route-id="@item.Id" asp-route-AssignPartyName="@item.PartyId" asp-route-ProductId="@item.ProductId">Edit</a>
                             <a data-value="@item.Id"
                                class="btn-danger btn btn-outline" asp-action="DelAassignParty" asp-controller="PartyAssign" asp-route-id="@item.Id" onclick="return confirm('sure...?')">delete</a>
                         </td>

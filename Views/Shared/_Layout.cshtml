@@ -9,27 +9,27 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar nav-pills   navbar-dark  navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3  ">
             <div class="container">
                 <div class="navbar-dark navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a asp-controller="Party" asp-action="Party" class="nav-link text-dark">Invoice Module</a>
+                            <a asp-controller="Party" asp-action="Party" class="nav-link nav-link.active text-dark">Invoice Module</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-controller="Party" asp-action="Party" class="nav-link text-dark">Party</a>
+                            <a asp-controller="Party" asp-action="Party" class="nav-link nav-link.active text-dark">Party</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-controller="Product" asp-action="Product" class="nav-link text-dark">Products</a>
+                            <a asp-controller="Product" asp-action="Product" class="nav-link  nav-link.active text-dark">Products</a>
+                        </li>
+                        <li class="nav-item" >
+                            <a asp-controller="PartyAssign" asp-action="PartyAssign" class="nav-link nav-link.active text-dark nav-pills ">PartyAssign</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-controller="PartyAssign" asp-action="PartyAssign" class="nav-link text-dark">PartyAssign</a>
+                            <a asp-controller="ProductRate" asp-action="ProductRate" class="nav-link nav-link.active text-dark">Product Rate</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-controller="ProductRate" asp-action="ProductRate" class="nav-link text-dark">Product Rate</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Invoice" asp-action="Invoice">Invoice</a>
+                            <a class="nav-link nav-link.active text-dark" asp-controller="Invoice" asp-action="Invoice">Invoice</a>
                         </li>
 
                     </ul>

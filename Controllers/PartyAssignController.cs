@@ -59,8 +59,8 @@ namespace Exercise_03.Controllers
         }
 
 
-        [HttpGet("UpdateAssignParty/{id}/{AssignPartyName}/{AssignProductName}")]
-        public IActionResult UpdateAssignParty(int AssignPartyName, int AssignProductName, int isSuccess = 2, [FromRoute] int id = 0)
+        [HttpGet("UpdateAssignParty/{id}/{AssignPartyName}/{ProductId}")]
+        public IActionResult UpdateAssignParty(int AssignPartyName, int ProductId, int isSuccess = 2, [FromRoute] int id = 0)
         {
             ViewBag.isSuccess = isSuccess;
             ViewBag.id = id;
@@ -70,14 +70,14 @@ namespace Exercise_03.Controllers
             AssignPartyModel assignPartyModel = new AssignPartyModel()
             {
                 PartyId = AssignPartyName,
-                ProductId = AssignProductName
+                ProductId = ProductId
             };
 
             return View("AddAssignParty", assignPartyModel);
         }
 
 
-        [HttpPost("UpdateAssignParty/{id}/{AssignPartyName}/{AssignProductName}")]
+        [HttpPost("UpdateAssignParty/{id}/{AssignPartyName}/{ProductId}")]
         public async Task<IActionResult> UpdateAssignParty([FromRoute] long id, AssignPartyModel model)
         {
 

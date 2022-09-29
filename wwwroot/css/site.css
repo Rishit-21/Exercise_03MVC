@@ -1,10 +1,11 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+.navbar-brand {
+    /*white-space: normal;*/
+    /*text-align: center;*/
+    /*word-break: break-all;*/
+    background-color: #1e1818
 }
 
 /* Provide sufficient contrast against white background */
@@ -12,7 +13,10 @@ a {
   color: #0366d6;
   
 }
+:hover.a{
+    background-color:rgb(23 19 19 / 0.05)
 
+}
 
 .btn-primary {
   color: #fff;
@@ -106,14 +110,14 @@ body {
     margin-top: 3%;
 }
 
-.add-party-main-div {
+/*.add-party-main-div {
     justify-content: center;
     text-align: center;
     display: flex;
     font-size: 18px;
     padding: 15px 15px;
     line-height: 10px
-}
+}*/
 
 .addPartyBtns {
     margin:5% 0 0 0;
@@ -177,14 +181,14 @@ body {
     margin-top: 3%;
 }
 
-.add-product-main-div {
+/*.add-product-main-div {
     justify-content: center;
     text-align: center;
     display: flex;
     font-size: 18px;
     padding: 15px 15px;
     line-height: 10px
-}
+}*/
 
 .addProductBtns {
     margin: 5% 0 0 0;
@@ -201,14 +205,14 @@ body {
 
 
 
-.add-Assign-main-div {
+/*.add-Assign-main-div {
     justify-content: center;
     text-align: center;
     display: flex;
     font-size: 18px;
     padding: 15px 15px;
     line-height: 10px
-}
+}*/
 
 .addAssignBtns {
     margin: 5% 0 0 0;
@@ -242,14 +246,14 @@ body {
 }
 
 
-.add-productRate-main-div {
+/*.add-productRate-main-div {
     justify-content: center;
     text-align: center;
     display: flex;
     font-size: 18px;
     padding: 15px 15px;
     line-height: 10px
-}
+}*/
 
 .addProductRateBtns {
     margin: 5% 0 0 0;

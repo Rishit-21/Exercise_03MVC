@@ -49,13 +49,13 @@
     </div>
     <div class="add-product-main-div">
         <form asp-action="@action" asp-controller="Product" enctype="multipart/form-data">
-            <div class=" add-product-txt-div">
+            <div class="form-group row justify-content-center">
 
-                <label asp-for="productName"></label>
+                <label class="col-sm-2 col-form-label " asp-for="productName"></label>
 
 
-                <input asp-for="productName" class="add-party-txt test" disabled="@hidden"  />
-                <span asp-validation-for="productName" class="text-danger"></span>
+                <input asp-for="productName" class="form-control col-sm-4" disabled="@hidden"  />
+                <span asp-validation-for="productName" class="text-danger col-sm-3 col-form-label"></span>
             </div>
 
             <div class="form-group addProductBtns">

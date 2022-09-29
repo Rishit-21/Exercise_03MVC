@@ -40,6 +40,6 @@ namespace Exercise_03.Models
 
         //public Party Party { get; set; }
 
-        //public Product Product { get; set; }
+        //public Product Product { get; set; } 
     }
 }

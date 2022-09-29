@@ -10,7 +10,7 @@
 }
 
 <div class="container">
-    <div class="clsAddProductRate">
+    <div class="align-content-center">
 
 
 
@@ -67,28 +67,28 @@
                     <label>product name:</label>
 
                 </div>*@
-            <div class="form-group row justify-content-center">
-                <label asp-for="ProductId" class="col-sm-4 col-form-label"></label>
-                <select class="form-control col-sm-7"  asp-for="ProductId"
+            <div class="form-group row justify-content-center ">
+                <label asp-for="ProductId" class="col-sm-2 col-form-label"></label>
+                <select class="form-control col-sm-4"  asp-for="ProductId"
                         asp-items="(await _prodRepo.GetAllProducts()).Select(x=> new SelectListItem() { Text=x.productName,Value=x.Id.ToString()})" readOnly="@ViewBag.disable" >
                     <option value="">Choose Your Product</option>
                 </select>
-                <span asp-validation-for="ProductId" class="text-danger"></span>
+                <span asp-validation-for="ProductId" class="text-danger col-sm-3 col-form-label"></span>
 
             </div>
 
-            <div class=" add-productRate-txt-div">
-                <label asp-for="ProductRates"></label>
-                <input class=" add-Product-txt" asp-for="ProductRates" />
-                <span asp-validation-for="ProductRates" class="text-danger"></span>
+            <div class="form-group row justify-content-center">
+                <label asp-for="ProductRates"  class="col-sm-2 col-form-label"></label>
+                <input class=" form-control col-sm-4" asp-for="ProductRates" />
+                <span asp-validation-for="ProductRates" class="text-danger col-sm-3 col-form-label"></span>
             </div>
-            <div class=" add-productRateDate-txt-div">
-                <label asp-for="DateOfRate"></label>
-                <input class=" add-Product-txt" asp-for="DateOfRate" type="datetime" value="@DateTime.Today.ToString("dd-MM-yyyy")" readOnly style="color:grey" />
-                <span asp-validation-for="DateOfRate" class="text-danger"></span>
+            <div class="form-group row justify-content-center">
+                <label asp-for="DateOfRate"  class="col-sm-2 col-form-label"></label>
+                <input class=" form-control col-sm-4" asp-for="DateOfRate" type="datetime" value="@DateTime.Today.ToString("dd-MM-yyyy")" readOnly style="color:grey" />
+                <span asp-validation-for="DateOfRate" class="text-danger col-sm-3 col-form-label"></span>
             </div>
 
-            <div class="form-group addProductRateBtns">
+            <div class="form-group addProductRateBtns ">
               
                     <input type="submit" value="Save" class="btn btn-primary saveBtn " hidden="@hidden" />
 
