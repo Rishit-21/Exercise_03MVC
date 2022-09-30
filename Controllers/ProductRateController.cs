@@ -22,10 +22,18 @@ namespace Exercise_03.Controllers
             _webHostEnviroment = webHostEnviroment;
         }
 
-        public async Task<IActionResult> ProductRate()
+        public async Task<IActionResult> ProductRate(int isSort=0)
         {
             var Data = await _productRateRepository.GetAllProductRate();
+            if (isSort == 1)
+            {
+            return View(Data.OrderBy(x=>x.Product.productName));
 
+            }
+            else if (isSort == 2)
+            {
+                return View(Data.OrderBy(x => x.ProductRates));
+            }
             return View(Data);
         }
 
@@ -109,6 +117,23 @@ namespace Exercise_03.Controllers
 
             }
             return null;
+        }
+
+        [HttpGet("SortByproductRateId")]
+        public IActionResult SortByproductRateId()
+        {
+
+            return RedirectToAction("ProductRate", new { isSort = 0 });
+        }
+        [HttpGet("SortByProducts")]
+        public IActionResult SortByProducts()
+        {
+            return RedirectToAction("ProductRate", new { isSort = 1 });
+        }
+        [HttpGet("SortByRate")]
+        public IActionResult SortByRate()
+        {
+            return RedirectToAction("ProductRate", new { isSort = 2 });
         }
 
 

@@ -20,9 +20,27 @@ namespace Exercise_03.Controllers
             _webHostEnviroment = webHostEnviroment;
         }
 
-        public async Task<IActionResult> Party()
+        public async Task<IActionResult> Party(string isSort = "Ase0", string sort = "asec")
         {
             var parties = await _partyRepository.GetAllParties();
+            if (isSort == "Ase1")
+            {
+                ViewBag.sort = sort;
+                return View(parties.OrderBy(x => x.partyName));
+            }
+            if (isSort == "desc0")
+            {
+                ViewBag.sort = sort;
+                return View(parties.OrderByDescending(x => x.Id));
+
+            }
+            if (isSort == "desc1")
+            {
+                ViewBag.sort = sort;
+                return View(parties.OrderByDescending(x => x.partyName));
+
+            }
+            ViewBag.sort = sort;
             return View(parties);
         }
 
@@ -33,9 +51,6 @@ namespace Exercise_03.Controllers
             ViewBag.id = id;
             return View();
         }
-
-
-
 
         [HttpPost]
         public async Task<IActionResult> AddParty(partyModel model, [FromQuery] long Partyid)
@@ -52,8 +67,6 @@ namespace Exercise_03.Controllers
                 //ViewBag.id = 0;
                 return RedirectToAction(nameof(AddParty), new { isSuccess = 1, Partyid = id });
             }
-
-
             return View("AddParty");
         }
 
@@ -110,6 +123,31 @@ namespace Exercise_03.Controllers
 
             }
             return null;
+        }
+        string sort = "dsec";
+        [HttpGet("SortPartyId/{isSortId}")]
+        public IActionResult SortPartyId(string isSortId)
+        {
+
+            if (isSortId == "desc")
+            {
+
+                return RedirectToAction("Party", new { isSort = "Ase0", sort = "asec" });
+            }
+            return RedirectToAction("Party", new { isSort = "desc0", sort = "desc" });
+
+        }
+        [HttpGet("SortParty/{isSortNme}")]
+        public IActionResult SortParty(string isSortNme)
+        {
+
+            if (isSortNme == "descName")
+            {
+                return RedirectToAction("Party", new { isSort = "Ase1", sort = "ascName" });
+
+            }
+            return RedirectToAction("Party", new { isSort = "desc1", sort = "descName" });
+
         }
 
 

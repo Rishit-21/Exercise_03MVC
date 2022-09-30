@@ -34,6 +34,7 @@ namespace Exercise_03.Models
 
         [Required]
         [Range(1,100)]
+        
         public long Quantity { get; set; }
 
         public long Total { get; set; }

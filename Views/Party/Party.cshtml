@@ -11,11 +11,19 @@
         </a>
     </div>
     <div class="Partytbl table-center">
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="Party">
             <thead>
                 <tr>
-                    <th>Party ID</th>
-                    <th>Party Name</th>
+                    <th>
+                        <a class="nav-link text-dark" asp-controller="Party" asp-action="SortPartyId" asp-route-isSortId="@ViewBag.sort">
+                            Party ID
+                        </a>
+                    </th>
+                    <th>
+                        <a class="nav-link text-dark" asp-controller="Party" asp-action="SortParty" asp-route-isSortNme="@ViewBag.sort">
+                            Party Name
+                        </a>
+                    </th>
                     <th>Action</th>
                 </tr>
             </thead>

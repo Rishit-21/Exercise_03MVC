@@ -23,9 +23,17 @@ namespace Exercise_03.Controllers
 
         }
 
-        public async Task<IActionResult> PartyAssign()
+        public async Task<IActionResult> PartyAssign(int isSort=0)
         {
             var AssignParties = await _partyAssignRepository.GetAllAssignParty();
+            if (isSort == 1)
+            {
+                return View(AssignParties.OrderBy(x=>x.Product.productName));
+            }
+            else if (isSort == 2)
+            {
+                return View(AssignParties.OrderBy(x => x.Party.partyName));
+            }
             return View(AssignParties);
         }
 
@@ -117,6 +125,24 @@ namespace Exercise_03.Controllers
             var products = await _partyAssignRepository.getNotAssigendProduct(PartyId);
             return Json(products);
         }
+
+        [HttpGet("SortByAssignId")]
+        public IActionResult SortByAssignId()
+        {
+
+            return RedirectToAction("PartyAssign", new { isSort = 0 });
+        }
+        [HttpGet("SortByProduct")]
+        public IActionResult SortByProduct()
+        {
+            return RedirectToAction("PartyAssign", new { isSort = 1 });
+        }
+        [HttpGet("SortByParty")]
+        public IActionResult SortByParty()
+        {
+            return RedirectToAction("PartyAssign", new { isSort = 2 });
+        }
+
 
     }
 }

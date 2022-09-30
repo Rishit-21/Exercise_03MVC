@@ -27,7 +27,7 @@ namespace Exercise_03.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Invoice(long id, long grandTotal = 0, bool isSuccess = false)
+        public async Task<IActionResult> Invoice(long id, AssignPartyModel model, long grandTotal = 0,  bool isSuccess = false)
         {
             ViewBag.isSuccess = isSuccess;
             if (isSuccess == true)
@@ -35,7 +35,15 @@ namespace Exercise_03.Controllers
                 ViewBag.InvoiceTable = await _invoiceRepository.ShowInvoice(id);
                 ViewBag.Display = true;
                 ViewBag.grandTotal = grandTotal;
-                return View();
+                var invoiceModel = new InvoiceModel()
+                {
+                    
+                    partyId = id,
+                  
+                    
+
+                };
+                return View(invoiceModel);
             }
             else
             {

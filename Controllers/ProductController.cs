@@ -21,9 +21,14 @@ namespace Exercise_03.Controllers
             _webHostEnviroment = webHostEnviroment;
         }
 
-        public async Task<IActionResult> Product()
+        public async Task<IActionResult> Product(int isSort = 0)
         {
             var products = await _productRepository.GetAllProducts();
+            if (isSort == 1)
+            {
+            return View(products.OrderBy(x=>x.productName));
+
+            }
             return View(products);
         }
 
@@ -102,6 +107,18 @@ namespace Exercise_03.Controllers
 
             }
             return null;
+        }
+
+        [HttpGet("SortProductId")]
+        public IActionResult SortProductId()
+        {
+
+            return RedirectToAction("Product", new { isSort = 0 });
+        }
+        [HttpGet("SortProduct")]
+        public IActionResult SortProduct()
+        {
+            return RedirectToAction("Product", new { isSort = 1 });
         }
 
     }

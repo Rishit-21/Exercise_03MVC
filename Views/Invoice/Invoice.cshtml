@@ -41,13 +41,13 @@
             </div>
             <div class="form-group row justify-content-center">
                 <label class="col-sm-2 col-form-label" asp-for="Quantity">Quantity</label>
-                <input class="form-control col-sm-4" asp-for="Quantity" />
+                <input class="form-control col-sm-4" asp-for="Quantity" value="1" />
                 <span asp-validation-for="Quantity" class="text-danger col-sm-3 col-form-label"></span>
             </div>
 
             <div class="form-group row justify-content-center addAssignBtns">
 
-                <input type="submit" value="Save" class="btn btn-primary saveBtn" onclick="" />
+                <input type="submit" value="Save" class="btn btn-primary saveBtn" onclick=""  />
 
             </div>
 
@@ -135,7 +135,7 @@
 
                         console.log(productId)
                         CurRate.val(d);
-                      
+
                     },
                     error: function () {
                         alert('Error!');
@@ -147,3 +147,44 @@
         });
     });
 </script>
+@if (ViewBag.Display == true)
+{
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script>
+        $('#ddlParty').ready(function () {
+            var PartyId = parseInt($(this).val());
+            var PartyId = $('#ddlParty option:selected').val();
+            var ddlParty = $('#ddlParty')
+            console.log("hello")
+            console.log(PartyId)
+            if (!isNaN(PartyId)) {
+                var ddlProuct = $('#ddlProuct');
+                ddlProuct.empty();
+                ddlProuct.append($("<option></option>").val('').html('Please wait ...'));
+                //ddlParty.attr('Enabled', false);
+
+                $.ajax({
+                    url: "https://localhost:44326/Invoice/BindProductDetails",
+                    type: 'GET',
+
+                    data: { PartyId: PartyId },
+                    success: function (d) {
+
+                        ddlProuct.empty(); // Clear the please wait
+                        ddlProuct.append($("<option></option>").val('').html('Select product'));
+                        $.each(d, function (i, products) {
+                            ddlProuct.append($("<option></option>").val(products.productId).html(products.productName))
+                        });
+                    },
+                    error: function () {
+                        alert('Error!');
+                    }
+                });
+            }
+
+
+        })
+
+    </script>
+}
